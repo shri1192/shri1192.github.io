@@ -1,5 +1,75 @@
 // tickers are assumed to be from NSE
-const tickers = ['BRITANNIA', 'AVANTIFEED'];
+const tickers = [
+  // Banks
+  'HDFCBANK',
+  'ICICIBANK',
+  'KOTAKBANK',
+  'AXISBANK',
+
+  // Financial Services
+  'BAJFINANCE',
+  'BAJAJFINSV',
+  'HDFC',
+
+  // AMCs
+  'HDFCAMC',
+
+  // IT
+  'TCS',
+  'INFY',
+  'HCLTECH',
+
+  // Pharma
+  'ABBOTINDIA',
+  'SANOFI',
+  'PFIZER',
+  'DIVISLAB',
+
+  // Insurance
+  'HDFCLIFE',
+  'SBILIFE',
+  'ICICIPRULI',
+  'ICICIGI',
+
+  // Paint
+  'ASIANPAINT',
+  'BERGEPAINT',
+  'AKZOINDIA',
+
+  // FMCG
+  'BRITANNIA',
+  'HINDUNILVR',
+  'ITC',
+  'BATAINDIA',
+  'COLPAL',
+  'MARICO',
+  'DABUR',
+  'PIDILITIND',
+  'NESTLEIND',
+  'PGHH',
+
+  // Consumer Durables
+  'TITAN',
+  'WHIRLPOOL',
+  'TTKPRESTIG',
+  'VOLTAS',
+  'HAVELLS',
+  'GILETTE',
+
+  // Specialty Chemicals
+  'VINATIORGA',
+  'NAVINFLUOR',
+  'DEEPAKNTR',
+  'SUDARSCHEM',
+  'AARTIIND',
+
+  // MISC
+  'SBICARD',
+  'BAJAJHLDNG',
+  'AVANTIFEED',
+  'MARUTI',
+  'BHARTIARTL',
+];
 const indicators =
     ['open', 'high', 'low', 'close', 'EMA20', 'EMA50', 'EMA200', 'RSI'];
 
