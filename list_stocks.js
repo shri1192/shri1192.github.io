@@ -77,7 +77,8 @@ const tickers = [
   'BHARATRAS',
   'SUMICHEM',
 ];
-const fetched_indicators = ['open', 'high', 'low', 'close', 'EMA200', 'RSI'];
+const fetched_indicators =
+    ['sector', 'industry', 'open', 'high', 'low', 'close', 'EMA200', 'RSI'];
 const additional_indicators =
     ['closeToEMA200 (%)', 'Trading View Chart Link', 'Screener Details Link'];
 const additional_indicators_calculators = [
@@ -125,9 +126,20 @@ display_stocks_table = (ticker_indicators) => {
   // create the table header
   const tableHeader = get_table_header();
   // stocks close to ema200
-  const sorted_tickers = tickers.concat().sort(
-      (ticker1, ticker2) => ticker_indicators[ticker1]['closeToEMA200 (%)'] -
-          ticker_indicators[ticker2]['closeToEMA200 (%)']);
+  const sorted_tickers =
+      tickers.concat()
+          .sort(
+              (ticker1, ticker2) =>
+                  ticker_indicators[ticker1]['closeToEMA200 (%)'] -
+                  ticker_indicators[ticker2]['closeToEMA200 (%)'])
+          .sort(
+              (ticker1, ticker2) =>
+                  ticker_indicators[ticker1]['industry'].localeCompare(
+                      ticker_indicators[ticker2]['industry']))
+          .sort(
+              (ticker1, ticker2) =>
+                  ticker_indicators[ticker1]['sector'].localeCompare(
+                      ticker_indicators[ticker2]['sector']));
 
   const near_ema200_condition = (ticker) =>
       ticker_indicators[ticker]['closeToEMA200 (%)'] <= 1;
@@ -169,19 +181,25 @@ get_table_body = (tickers_for_table_body, ticker_indicators) => {
     const current_ticker = tickers_for_table_body[i];
     const current_indicators = ticker_indicators[current_ticker];
 
-    tableBody += '<tr>';
-    tableBody += '<td>' + current_ticker + '</td>';
+    let tableRow = '<tr';
+    if (current_indicators['closeToEMA200 (%)'] <= 10) {
+      tableRow += ' class="table-success"';
+      }
+    tableRow += '>';
+    tableRow += '<td>' + current_ticker + '</td>';
     for (let j = 0; j < all_indicators.length; j++) {
-      tableBody += '<td>'
+      tableRow += '<td>'
       const indicator = current_indicators[all_indicators[j]];
       if (typeof indicator === 'number') {
-        tableBody += indicator.toFixed(3);
+        tableRow += indicator.toFixed(3);
       } else {
-        tableBody += indicator;
+        tableRow += indicator;
       }
-      tableBody += '</td>';
+      tableRow += '</td>';
     }
-    tableBody += '</tr>';
+    tableRow += '</tr>';
+
+    tableBody += tableRow;
   }
   tableBody += '</tbody>';
   return tableBody;
