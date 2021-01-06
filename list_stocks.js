@@ -70,6 +70,12 @@ const tickers = [
   'AVANTIFEED',
   'MARUTI',
   'BHARTIARTL',
+  
+  // Agro Chemicals
+  'BAYERCROP',
+  'PIIND',
+  'BHARATRAS',
+  'SUMICHEM',
 ];
 const fetched_indicators =
     ['open', 'high', 'low', 'close', 'EMA200', 'RSI'];
