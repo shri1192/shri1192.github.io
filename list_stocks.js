@@ -155,7 +155,14 @@ get_table_body = (tickers_for_table_body, ticker_indicators) => {
     tableBody += '<tr>';
     tableBody += '<td>' + current_ticker + '</td>';
     for (let j = 0; j < all_indicators.length; j++) {
-      tableBody += '<td>' + current_indicators[all_indicators[j]] + '</td>';
+      tableBody += '<td>' 
+      const indicator = current_indicators[all_indicators[j]];
+      if (typeof indicator === "number") {
+        tableBody += indicator.toFixed(3);
+      } else {
+        tableBody += indicator;
+      }
+      tableBody += '</td>';
     }
     tableBody += '</tr>';
   }
