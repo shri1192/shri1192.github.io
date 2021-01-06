@@ -64,6 +64,7 @@ const tickers = [
   'AARTIIND',
 
   // MISC
+  'RELIANCE',
   'SBICARD',
   'BAJAJHLDNG',
   'AVANTIFEED',
