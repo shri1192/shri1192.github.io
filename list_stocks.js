@@ -70,22 +70,33 @@ const tickers = [
   'AVANTIFEED',
   'MARUTI',
   'BHARTIARTL',
-  
+
   // Agro Chemicals
   'BAYERCROP',
   'PIIND',
   'BHARATRAS',
   'SUMICHEM',
 ];
-const fetched_indicators =
-    ['open', 'high', 'low', 'close', 'EMA200', 'RSI'];
-const additional_indicators = ['closeToEMA200Percent'];
-const additional_indicators_calculators = [(indicators) => {
-  // indicators should be a map of fetched_indicators and additional_indicators
-  // occuring before this indicator keys to their values
-  return ((indicators['close'] - indicators['EMA200']) / indicators['EMA200']) *
-      100;
-}];
+const fetched_indicators = ['open', 'high', 'low', 'close', 'EMA200', 'RSI'];
+const additional_indicators =
+    ['closeToEMA200 (%)', 'Trading View Chart Link', 'Screener Details Link'];
+const additional_indicators_calculators = [
+  (ticker, indicators) => {
+    // indicators should be a map of fetched_indicators and
+    // additional_indicators occuring before this indicator keys to their values
+    return ((indicators['close'] - indicators['EMA200']) /
+            indicators['EMA200']) *
+        100;
+  },
+  (ticker, indicators) => {
+    return `<a href="https://www.tradingview.com/chart?symbol=NSE:${
+        ticker}" target="_blank">Trading View Chart</a>`;
+  },
+  (ticker, indicators) => {
+    return `<a href="https://www.screener.in/company/${
+        ticker}/consolidated/" target="_blank">Screener Details</a>`;
+  },
+];
 const all_indicators = fetched_indicators.concat(additional_indicators);
 
 process_response_text = function(responseText) {
@@ -103,7 +114,7 @@ process_response_text = function(responseText) {
     // set the additional indicators
     for (let j = 0; j < additional_indicators.length; j++) {
       current_indicators[additional_indicators[j]] =
-          additional_indicators_calculators[j](current_indicators);
+          additional_indicators_calculators[j](ticker, current_indicators);
     }
     ticker_indicators[ticker] = current_indicators;
   }
@@ -115,11 +126,11 @@ display_stocks_table = (ticker_indicators) => {
   const tableHeader = get_table_header();
   // stocks close to ema200
   const sorted_tickers = tickers.concat().sort(
-      (ticker1, ticker2) => ticker_indicators[ticker1]['closeToEMA200Percent'] -
-          ticker_indicators[ticker2]['closeToEMA200Percent']);
+      (ticker1, ticker2) => ticker_indicators[ticker1]['closeToEMA200 (%)'] -
+          ticker_indicators[ticker2]['closeToEMA200 (%)']);
 
   const near_ema200_condition = (ticker) =>
-      ticker_indicators[ticker]['closeToEMA200Percent'] <= 1;
+      ticker_indicators[ticker]['closeToEMA200 (%)'] <= 1;
   const near_ema200_tickers = sorted_tickers.filter(near_ema200_condition);
   const far_ema200_tickers =
       sorted_tickers.filter((ticker) => !near_ema200_condition(ticker));
@@ -161,9 +172,9 @@ get_table_body = (tickers_for_table_body, ticker_indicators) => {
     tableBody += '<tr>';
     tableBody += '<td>' + current_ticker + '</td>';
     for (let j = 0; j < all_indicators.length; j++) {
-      tableBody += '<td>' 
+      tableBody += '<td>'
       const indicator = current_indicators[all_indicators[j]];
-      if (typeof indicator === "number") {
+      if (typeof indicator === 'number') {
         tableBody += indicator.toFixed(3);
       } else {
         tableBody += indicator;
