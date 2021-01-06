@@ -126,7 +126,7 @@ display_stocks_table = (ticker_indicators) => {
 
 /** Returns a string with the html table head element */
 get_table_header = () => {
-  let tableHead = '<thead>' +
+  let tableHead = '<thead class="thead-light">' +
       '<tr>' +
       '<th>' +
       'Ticker' +
