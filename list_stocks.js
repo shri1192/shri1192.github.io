@@ -54,7 +54,7 @@ const tickers = [
   'TTKPRESTIG',
   'VOLTAS',
   'HAVELLS',
-  'GILETTE',
+  'GILLETTE',
 
   // Specialty Chemicals
   'VINATIORGA',
@@ -71,53 +71,96 @@ const tickers = [
   'MARUTI',
   'BHARTIARTL',
 ];
-const indicators =
-    ['open', 'high', 'low', 'close', 'EMA20', 'EMA50', 'EMA200', 'RSI'];
+const fetched_indicators =
+    ['open', 'high', 'low', 'close', 'EMA200', 'RSI'];
+const additional_indicators = ['closeToEMA200Percent'];
+const additional_indicators_calculators = [(indicators) => {
+  // indicators should be a map of fetched_indicators and additional_indicators
+  // occuring before this indicator keys to their values
+  return ((indicators['close'] - indicators['EMA200']) / indicators['EMA200']) *
+      100;
+}];
+const all_indicators = fetched_indicators.concat(additional_indicators);
 
 process_response_text = function(responseText) {
   // parsed_response is a list of ticker results
   const parsed_response = JSON.parse(responseText)['data'];
-  const result = parsed_response.map((ticker_result) => {
-    const indicator_keys = indicators;
-    const indicator_values_list = ticker_result['d'];
-    const indicator_values = {};
-    for (let i = 0; i < indicator_keys.length; i++) {
-      indicator_values[indicator_keys[i]] = indicator_values_list[i];
+  const ticker_indicators = {};
+  for (let i = 0; i < parsed_response.length; i++) {
+    const ticker = parsed_response[i]['s'].split(':')[1];
+    const fetched_indicators_values = parsed_response[i]['d'];
+    // set the fetched indicators
+    const current_indicators = {};
+    for (let j = 0; j < fetched_indicators.length; j++) {
+      current_indicators[fetched_indicators[j]] = fetched_indicators_values[j];
     }
-    const result = {};
-    result['ticker'] = ticker_result['s']
-    result['indicators'] = indicator_values;
-    return result;
-  });
-  return result;
+    // set the additional indicators
+    for (let j = 0; j < additional_indicators.length; j++) {
+      current_indicators[additional_indicators[j]] =
+          additional_indicators_calculators[j](current_indicators);
+    }
+    ticker_indicators[ticker] = current_indicators;
+  }
+  return ticker_indicators;
 };
 
-display_stocks_table = (stocksData) => {
+display_stocks_table = (ticker_indicators) => {
   // create the table header
-  let tableData = '<thead>' +
+  const tableHeader = get_table_header();
+  // stocks close to ema200
+  const sorted_tickers = tickers.concat().sort(
+      (ticker1, ticker2) => ticker_indicators[ticker1]['closeToEMA200Percent'] -
+          ticker_indicators[ticker2]['closeToEMA200Percent']);
+
+  const near_ema200_condition = (ticker) =>
+      ticker_indicators[ticker]['closeToEMA200Percent'] <= 1;
+  const near_ema200_tickers = sorted_tickers.filter(near_ema200_condition);
+  const far_ema200_tickers =
+      sorted_tickers.filter((ticker) => !near_ema200_condition(ticker));
+
+  document.getElementById('table-stocks-near-ema200').innerHTML =
+      tableHeader + get_table_body(near_ema200_tickers, ticker_indicators);
+  document.getElementById('table-stocks-far-ema200').innerHTML =
+      tableHeader + get_table_body(far_ema200_tickers, ticker_indicators);
+};
+
+/** Returns a string with the html table head element */
+get_table_header = () => {
+  let tableHead = '<thead>' +
       '<tr>' +
       '<th>' +
       'Ticker' +
       '</th>';
-  for (let i = 0; i < indicators.length; i++) {
-    tableData += '<th>' + indicators[i] + '</th>';
+  for (let i = 0; i < all_indicators.length; i++) {
+    tableHead += '<th>' + all_indicators[i] + '</th>';
   }
-  tableData += '</thead>';
+  tableHead += '</thead>';
+  return tableHead;
+};
 
-  // create the table rows
-  tableData += '<tbody>';
-  for (let i = 0; i < stocksData.length; i++) {
-    tableData += '<tr>';
-    tableData += '<td>' + stocksData[i]['ticker'].split(':')[1] + '</td>';
-    const stock_indicators = stocksData[i]['indicators'];
-    for (let j = 0; j < indicators.length; j++) {
-      tableData += '<td>' + stock_indicators[indicators[j]] + '</td>';
+/**
+ * Returns a string with the html table body element containing rows for all the
+ *  tickers specified as the param and in that order.
+ *
+ *  @param tickers_for_table_body Ordered list of tickers for which to create
+ * the table body
+ *  @param ticker_indicators Map from ticker to the ticker's indicators
+ */
+get_table_body = (tickers_for_table_body, ticker_indicators) => {
+  let tableBody = '<tbody>';
+  for (let i = 0; i < tickers_for_table_body.length; i++) {
+    const current_ticker = tickers_for_table_body[i];
+    const current_indicators = ticker_indicators[current_ticker];
+
+    tableBody += '<tr>';
+    tableBody += '<td>' + current_ticker + '</td>';
+    for (let j = 0; j < all_indicators.length; j++) {
+      tableBody += '<td>' + current_indicators[all_indicators[j]] + '</td>';
     }
-    tableData += '</tr>';
+    tableBody += '</tr>';
   }
-  tableData += '</tbody>'
-
-  document.getElementById('table-stocks').innerHTML = tableData;
+  tableBody += '</tbody>';
+  return tableBody;
 };
 
 // send the request
@@ -125,7 +168,7 @@ const scan_url = 'https://scanner.tradingview.com/india/scan';
 const post_request_data = {
   'symbols':
       {'tickers': tickers.map((t) => 'NSE:' + t), 'query': {'types': []}},
-  'columns': indicators
+  'columns': fetched_indicators
 };
 const xhttp = new XMLHttpRequest();
 xhttp.onload = function() {
