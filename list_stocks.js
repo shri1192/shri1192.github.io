@@ -10,20 +10,33 @@ const tickers = [
   'BAJFINANCE',
   'BAJAJFINSV',
   'HDFC',
+  'BAJAJHLDNG',
+  'MUTHOOTFIN',
 
   // AMCs
   'HDFCAMC',
+  
+  // Cards
+  'SBICARD',
 
   // IT
   'TCS',
   'INFY',
   'HCLTECH',
+  'OFSS',
+  'PERSISTENT',
+  'MPHASIS',
+  'SONATSOFTW',
 
   // Pharma
   'ABBOTINDIA',
   'SANOFI',
   'PFIZER',
   'DIVISLAB',
+  'CAPLIPOINT',
+  
+  // Healthcare
+  'LALPATHLAB',
 
   // Insurance
   'HDFCLIFE',
@@ -40,6 +53,7 @@ const tickers = [
   'BRITANNIA',
   'HINDUNILVR',
   'ITC',
+  'VSTIND',
   'BATAINDIA',
   'COLPAL',
   'MARICO',
@@ -47,6 +61,10 @@ const tickers = [
   'PIDILITIND',
   'NESTLEIND',
   'PGHH',
+  'TASTYBITE',
+  
+  // Tea
+  'BBTC',
 
   // Consumer Durables
   'TITAN',
@@ -55,6 +73,13 @@ const tickers = [
   'VOLTAS',
   'HAVELLS',
   'GILLETTE',
+  '3MINDIA',
+  'JCHAC',
+  'HONAUT',
+  
+  // Garments/Textile
+  'PAGEIND',
+  'SFL'
 
   // Specialty Chemicals
   'VINATIORGA',
@@ -62,21 +87,50 @@ const tickers = [
   'DEEPAKNTR',
   'SUDARSCHEM',
   'AARTIIND',
-
-  // MISC
-  'RELIANCE',
-  'SBICARD',
-  'BAJAJHLDNG',
-  'AVANTIFEED',
-  'MARUTI',
-  'BHARTIARTL',
+  'VALIANTORG',
+  'ALKYLAMINE',
+  'IOLCP',
 
   // Agro Chemicals
   'BAYERCROP',
   'PIIND',
   'BHARATRAS',
-  'SUMICHEM',
+  'SUMICHEM',  
+  
+  // Gas Distribution
+  'MGL',
+  'IGL',
+  'GUJGASLTD',
+  
+  // Retail
+  'DMART',
+  
+  // Telecom
+  'BHARTIARTL', 
+  
+  // Petroleum
+  'RELIANCE',
+  
+  // Food Processing
+  'AVANTIFEED',
+  
+  // Auto
+  'MARUTI',   
+  
+  // Metal
+  'MAITHANALL',
+  
+  // Agritech
+  'DHANUKA',
+  
+  // Misc
+  'HEG',
+  'LAOPALA',
+  'KAJARIACER',
+  'VIPIND',
+  'RELAXO',
 ];
+
 const fetched_indicators =
     ['sector', 'industry', 'open', 'high', 'low', 'close', 'EMA200', 'RSI'];
 const additional_indicators =
