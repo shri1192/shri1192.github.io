@@ -270,6 +270,10 @@ get_table_body = (tickers_for_table_body, ticker_indicators) => {
   return tableBody;
 };
 
+// set the last updated time
+document.getElementById('last_updated_time').innerHTML =
+    new Date(document.lastModified).toLocaleTimeString();
+
 // send the request
 const scan_url = 'https://scanner.tradingview.com/india/scan';
 const post_request_data = {
