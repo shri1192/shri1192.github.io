@@ -15,7 +15,7 @@ const tickers = [
 
   // AMCs
   'HDFCAMC',
-  
+
   // Cards
   'SBICARD',
 
@@ -34,7 +34,7 @@ const tickers = [
   'PFIZER',
   'DIVISLAB',
   'CAPLIPOINT',
-  
+
   // Healthcare
   'LALPATHLAB',
 
@@ -62,7 +62,7 @@ const tickers = [
   'NESTLEIND',
   'PGHH',
   'TASTYBITE',
-  
+
   // Tea
   'BBTC',
 
@@ -76,10 +76,10 @@ const tickers = [
   '3MINDIA',
   'JCHAC',
   'HONAUT',
-  
+
   // Garments/Textile
   'PAGEIND',
-  'SFL'
+  'SFL',
 
   // Specialty Chemicals
   'VINATIORGA',
@@ -95,34 +95,34 @@ const tickers = [
   'BAYERCROP',
   'PIIND',
   'BHARATRAS',
-  'SUMICHEM',  
-  
+  'SUMICHEM',
+
   // Gas Distribution
   'MGL',
   'IGL',
   'GUJGASLTD',
-  
+
   // Retail
   'DMART',
-  
+
   // Telecom
-  'BHARTIARTL', 
-  
+  'BHARTIARTL',
+
   // Petroleum
   'RELIANCE',
-  
+
   // Food Processing
   'AVANTIFEED',
-  
+
   // Auto
-  'MARUTI',   
-  
+  'MARUTI',
+
   // Metal
   'MAITHANALL',
-  
+
   // Agritech
   'DHANUKA',
-  
+
   // Misc
   'HEG',
   'LAOPALA',
@@ -133,8 +133,7 @@ const tickers = [
 
 const fetched_indicators =
     ['sector', 'industry', 'open', 'high', 'low', 'close', 'EMA200', 'RSI'];
-const additional_indicators =
-    ['closeToEMA200 (%)', 'Trading View Chart Link', 'Screener Details Link'];
+const additional_indicators = ['closeToEMA200 (%)', 'Links'];
 const additional_indicators_calculators = [
   (ticker, indicators) => {
     // indicators should be a map of fetched_indicators and
@@ -144,12 +143,25 @@ const additional_indicators_calculators = [
         100;
   },
   (ticker, indicators) => {
-    return `<a href="https://www.tradingview.com/chart?symbol=NSE:${
-        ticker}" target="_blank">Trading View Chart</a>`;
-  },
-  (ticker, indicators) => {
-    return `<a href="https://www.screener.in/company/${
-        ticker}/consolidated/" target="_blank">Screener Details</a>`;
+    const trading_view_chart_url =
+        `https://www.tradingview.com/chart?symbol=NSE:${ticker}`;
+    const trading_view_details_url =
+        `https://www.tradingview.com/symbols/NSE:${ticker}`;
+    const screener_details_url =
+        `https://www.screener.in/company/${ticker}/consolidated/`;
+    const nse_page_url =
+        `https://www.nseindia.com/get-quotes/equity?symbol=${ticker}`;
+
+    create_link_list_item = (url, display_text) => {
+      return `<li><a href="${url}" target="_blank">${display_text}</a></li>`;
+    };
+
+    return '<ul>' +
+        create_link_list_item(trading_view_chart_url, 'Trading View Chart') +
+        create_link_list_item(
+               trading_view_details_url, 'Trading View Details') +
+        create_link_list_item(screener_details_url, 'Screener Details') +
+        create_link_list_item(nse_page_url, 'NSE Page') + '</ul>';
   },
 ];
 const all_indicators = fetched_indicators.concat(additional_indicators);
@@ -211,9 +223,8 @@ display_stocks_table = (ticker_indicators) => {
 get_table_header = () => {
   let tableHead = '<thead class="thead-light">' +
       '<tr>' +
-      '<th>' +
-      'Ticker' +
-      '</th>';
+      '<th>S.No.</th>' +
+      '<th>Ticker</th>';
   for (let i = 0; i < all_indicators.length; i++) {
     tableHead += '<th>' + all_indicators[i] + '</th>';
   }
@@ -238,9 +249,9 @@ get_table_body = (tickers_for_table_body, ticker_indicators) => {
     let tableRow = '<tr';
     if (current_indicators['closeToEMA200 (%)'] <= 10) {
       tableRow += ' class="table-success"';
-      }
+    }
     tableRow += '>';
-    tableRow += '<td>' + current_ticker + '</td>';
+    tableRow += `<td>${i + 1}</td><td>${current_ticker}</td>`;
     for (let j = 0; j < all_indicators.length; j++) {
       tableRow += '<td>'
       const indicator = current_indicators[all_indicators[j]];
