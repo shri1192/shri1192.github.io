@@ -90,6 +90,7 @@ const tickers = [
   'VALIANTORG',
   'ALKYLAMINE',
   'IOLCP',
+  'FINEORG',
 
   // Agro Chemicals
   'BAYERCROP',
