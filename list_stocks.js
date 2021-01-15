@@ -76,7 +76,6 @@ const tickers = [
   '3MINDIA',
   'JCHAC',
   'HONAUT',
-  'VIPIND',
 
   // Garments/Textile
   'PAGEIND',
