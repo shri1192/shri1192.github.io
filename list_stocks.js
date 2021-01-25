@@ -34,6 +34,7 @@ const tickers = [
   'PFIZER',
   'DIVISLAB',
   'CAPLIPOINT',
+  'GLAXO',
 
   // Healthcare
   'LALPATHLAB',
