@@ -131,6 +131,7 @@ const tickers = [
   'KAJARIACER',
   'VIPIND',
   'RELAXO',
+  'PGHL'
 ];
 
 const fetched_indicators =
