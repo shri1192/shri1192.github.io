@@ -1,41 +1,71 @@
-<!DOCTYPE html>
+<!doctype html>
+<html lang="en">
   <head>
+    <!-- Required meta tags -->
     <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta http-equiv="refresh" content="60" >
-    <title>Stocks to watch for</title>
 
-    <!-- Latest compiled and minified CSS -->
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
-    <!-- Optional theme -->
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap-theme.min.css" integrity="sha384-6pzBo3FDv/PJ8r2KRkGHifhEocL+1X2rVCTTkUfGk7/0pbek5mMa1upzvWbrUbOZ" crossorigin="anonymous">
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-F3w7mX95PdgyTmZZMECAngseQB83DfGTowi0iMjiWaeVhAn4FJkqJByhZMI3AhiU" crossorigin="anonymous">
+
+    <title>Stocks Info</title>
   </head>
-
   <body>
-    <div class="card float-right w-auto">
-      <div class="card-body text-info">
-	<p class="card-text">This page auto refreshes every minute.<br>Last refreshed at <span id="last_updated_time"></span>.</p>
-	<a href="" class="btn-sm btn-primary mh-25">Refresh Now</a>
+    <!-- Navbar -->
+    <nav class="navbar p-2 fixed-top navbar-dark bg-warning justify-content-between">
+      <!-- 1. Navbar brand -->
+      <a class="navbar-brand" href=""><span class="m-2 h1">Stocks Info</span></a>
+
+      <!-- 2. Navbar tabs -->
+      <nav>
+        <div class="nav nav-pills" id="nav-tab" role="tablist">
+          <button class="nav-link active" id="nav-stable-stocks-tab" data-bs-toggle="tab" data-bs-target="#nav-stable-stocks">Stable Stocks</button>
+          <button class="nav-link" id="nav-greedy-stocks-tab" data-bs-toggle="tab" data-bs-target="#nav-greedy-stocks">Greedy Stocks</button>
+        </div>
+      </nav>
+
+      <!-- 3. Navbar last refreshed at card -->
+      <div class="card float-right">
+        <div class="card-body text-info" style="font-size:10px">
+          <p class="card-text">This page auto refreshes every minute.<br>Last refreshed at <span id="last_updated_time"></span>.</p>
+          <!-- <a href="" class="btn-sm btn-primary" style="font-size:10px">Refresh Now</a> -->
+        </div>
+      </div>
+    </nav>
+
+    <!-- To prevent navbar from hiding content -->
+    <div class="container-fluid p-5"></div>
+
+    <!-- Tab content for navbar tabs -->
+    <div class="tab-content" id="nav-tabContent">
+      <!-- Stock class 1 tab content -->
+      <div class="tab-pane fade show active" id="nav-stable-stocks">
+        <!-- Stock near EMA 200 -->
+        <div class="container-fluid">
+          <h2 class="display-4">Stocks near EMA200 </h2>
+          <div class="table-responsive">
+            <table class="table table-bordered table-hover" id="table-stocks-near-ema200"> </table>
+          </div>
+        </div>
+
+        <!-- Stock far from EMA 200 -->
+        <div class="container-fluid">
+          <h2 class="display-4">Stocks far from EMA200 </h2>
+          <div class="table-responsive">
+            <table class="table table-bordered table-hover" id="table-stocks-far-ema200"> </table>
+          </div>
+        </div>
+      </div>
+
+      <!-- Stock class 2 tab content -->
+      <div class="tab-pane fade" id="nav-greedy-stocks" role="tabpanel" aria-labelledby="nav-greedy-stocks-tab">
+        <h1>// TODO: Add greedy stocks</h1>
       </div>
     </div>
 
-    <div class="container-fluid">
-      <h2 class="display-4">Stocks near EMA200 </h2>
-      <div class="table-responsive">
-        <table class="table table-bordered table-hover" id="table-stocks-near-ema200"> </table>
-      </div>
-    </div>
-
-    <div class="container-fluid">
-      <h2 class="display-4">Stocks far from EMA200 </h2>
-      <div class="table-responsive">
-        <table class="table table-bordered table-hover" id="table-stocks-far-ema200"> </table>
-      </div>
-    </div>
-
-    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+    <!-- Bootstrap Bundle with Popper -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-/bQdsTh/da6pkI1MST/rWKFNjaCP5gBSY4sEBT38Q/9RBh9AH40zEOg7Hlq2THRZ" crossorigin="anonymous"></script>
     <script src="list_stocks.js"></script>
   </body>
 </html>
