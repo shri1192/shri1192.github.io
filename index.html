@@ -8,6 +8,7 @@
 
     <!-- Bootstrap CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-F3w7mX95PdgyTmZZMECAngseQB83DfGTowi0iMjiWaeVhAn4FJkqJByhZMI3AhiU" crossorigin="anonymous">
+    <link rel="stylesheet" href="mystyle.css">
 
     <title>Stocks Info</title>
   </head>
@@ -41,20 +42,40 @@
     <div class="tab-content" id="nav-tabContent">
       <!-- Stock class 1 tab content -->
       <div class="tab-pane fade show active" id="nav-stable-stocks">
-        <!-- Stock near EMA 200 -->
-        <div class="container-fluid">
-          <h2 class="display-4">Stocks near EMA200 </h2>
-          <div class="table-responsive">
-            <table class="table table-bordered table-hover" id="table-stocks-near-ema200"> </table>
+        <!-- Accordions for near EMA 200 and far from EMA 200 tables -->
+        <div class="accordion" id="stable-stocks-accordion">
+          <!-- Stable stocks near ema 200 accordion -->
+          <div class="accordion-item">
+            <h2 class="accordion-header">
+              <button class="accordion-button" data-bs-toggle="collapse" data-bs-target="#stable-near-ema">
+                <h5> Near EMA 200 </h5>
+              </button>
+            </h2>
+            <div id="stable-near-ema" class="accordion-collapse collapse show">
+              <div class="accordion-body">
+                <div class="table-responsive">
+                  <table class="table table-bordered table-hover" id="table-stocks-near-ema200"> </table>
+                </div>
+              </div>
+            </div>
           </div>
-        </div>
 
-        <!-- Stock far from EMA 200 -->
-        <div class="container-fluid">
-          <h2 class="display-4">Stocks far from EMA200 </h2>
-          <div class="table-responsive">
-            <table class="table table-bordered table-hover" id="table-stocks-far-ema200"> </table>
+          <!-- Stable stocks far from ema 200 accordion -->
+          <div class="accordion-item">
+            <h2 class="accordion-header">
+              <button class="accordion-button collapsed" data-bs-toggle="collapse" data-bs-target="#stable-far-from-ema">
+                <h5> Far from EMA 200 </h5>
+              </button>
+            </h2>
+            <div id="stable-far-from-ema" class="accordion-collapse collapse">
+              <div class="accordion-body">
+                <div class="table-responsive">
+                  <table class="table table-bordered table-hover" id="table-stocks-far-ema200"> </table>
+                </div>
+              </div>
+            </div>
           </div>
+
         </div>
       </div>
 
