@@ -1,172 +1,178 @@
 // tickers are assumed to be from NSE
-const tickers = [
-  // Banks
-  'HDFCBANK',
-  'ICICIBANK',
-  'KOTAKBANK',
-  'AXISBANK',
+const stable_tickers = [
+    // Banks
+    'HDFCBANK',
+    'ICICIBANK',
+    'KOTAKBANK',
+    'AXISBANK',
 
-  // Financial Services
-  'BAJFINANCE',
-  'BAJAJFINSV',
-  'HDFC',
-  'BAJAJHLDNG',
-  'MUTHOOTFIN',
+    // Financial Services
+    'BAJFINANCE',
+    'BAJAJFINSV',
+    'HDFC',
+    'BAJAJHLDNG',
+    'MUTHOOTFIN',
 
-  // AMCs
-  'HDFCAMC',
+    // AMCs
+    'HDFCAMC',
 
-  // Cards
-  'SBICARD',
+    // Cards
+    'SBICARD',
 
-  // IT
-  'TCS',
-  'INFY',
-  'HCLTECH',
-  'OFSS',
-  'PERSISTENT',
-  'MPHASIS',
-  'SONATSOFTW',
+    // IT
+    'TCS',
+    'INFY',
+    'HCLTECH',
+    'OFSS',
+    'PERSISTENT',
+    'MPHASIS',
+    'SONATSOFTW',
 
-  // Pharma
-  'ABBOTINDIA',
-  'SANOFI',
-  'PFIZER',
-  'DIVISLAB',
-  'CAPLIPOINT',
-  'GLAXO',
+    // Pharma
+    'ABBOTINDIA',
+    'SANOFI',
+    'PFIZER',
+    'DIVISLAB',
+    'CAPLIPOINT',
+    'GLAXO',
 
-  // Healthcare
-  'LALPATHLAB',
+    // Healthcare
+    'LALPATHLAB',
 
-  // Insurance
-  'HDFCLIFE',
-  'SBILIFE',
-  'ICICIPRULI',
-  'ICICIGI',
+    // Insurance
+    'HDFCLIFE',
+    'SBILIFE',
+    'ICICIPRULI',
+    'ICICIGI',
 
-  // Paint
-  'ASIANPAINT',
-  'BERGEPAINT',
-  'AKZOINDIA',
+    // Paint
+    'ASIANPAINT',
+    'BERGEPAINT',
+    'AKZOINDIA',
 
-  // FMCG
-  'BRITANNIA',
-  'HINDUNILVR',
-  'ITC',
-  'VSTIND',
-  'BATAINDIA',
-  'COLPAL',
-  'MARICO',
-  'DABUR',
-  'PIDILITIND',
-  'NESTLEIND',
-  'PGHH',
-  'TASTYBITE',
+    // FMCG
+    'BRITANNIA',
+    'HINDUNILVR',
+    'ITC',
+    'VSTIND',
+    'BATAINDIA',
+    'COLPAL',
+    'MARICO',
+    'DABUR',
+    'PIDILITIND',
+    'NESTLEIND',
+    'PGHH',
+    'TASTYBITE',
 
-  // Tea
-  'BBTC',
+    // Tea
+    'BBTC',
 
-  // Consumer Durables
-  'TITAN',
-  'WHIRLPOOL',
-  'TTKPRESTIG',
-  'VOLTAS',
-  'HAVELLS',
-  'GILLETTE',
-  '3MINDIA',
-  'JCHAC',
-  'HONAUT',
+    // Consumer Durables
+    'TITAN',
+    'WHIRLPOOL',
+    'TTKPRESTIG',
+    'VOLTAS',
+    'HAVELLS',
+    'GILLETTE',
+    '3MINDIA',
+    'JCHAC',
+    'HONAUT',
 
-  // Garments/Textile
-  'PAGEIND',
-  'SFL',
+    // Garments/Textile
+    'PAGEIND',
+    'SFL',
 
-  // Specialty Chemicals
-  'VINATIORGA',
-  'NAVINFLUOR',
-  'DEEPAKNTR',
-  'SUDARSCHEM',
-  'AARTIIND',
-  'VALIANTORG',
-  'ALKYLAMINE',
-  'IOLCP',
-  'FINEORG',
+    // Specialty Chemicals
+    'VINATIORGA',
+    'NAVINFLUOR',
+    'DEEPAKNTR',
+    'SUDARSCHEM',
+    'AARTIIND',
+    'VALIANTORG',
+    'ALKYLAMINE',
+    'IOLCP',
+    'FINEORG',
 
-  // Agro Chemicals
-  'BAYERCROP',
-  'PIIND',
-  'BHARATRAS',
-  'SUMICHEM',
+    // Agro Chemicals
+    'BAYERCROP',
+    'PIIND',
+    'BHARATRAS',
+    'SUMICHEM',
 
-  // Gas Distribution
-  'MGL',
-  'IGL',
-  'GUJGASLTD',
+    // Gas Distribution
+    'MGL',
+    'IGL',
+    'GUJGASLTD',
 
-  // Retail
-  'DMART',
+    // Retail
+    'DMART',
 
-  // Telecom
-  'BHARTIARTL',
+    // Telecom
+    'BHARTIARTL',
 
-  // Petroleum
-  'RELIANCE',
+    // Petroleum
+    'RELIANCE',
 
-  // Food Processing
-  'AVANTIFEED',
+    // Food Processing
+    'AVANTIFEED',
 
-  // Auto
-  'MARUTI',
+    // Auto
+    'MARUTI',
 
-  // Metal
-  'MAITHANALL',
+    // Metal
+    'MAITHANALL',
 
-  // Agritech
-  'DHANUKA',
+    // Agritech
+    'DHANUKA',
 
-  // Misc
-  'HEG',
-  'LAOPALA',
-  'KAJARIACER',
-  'VIPIND',
-  'RELAXO',
-  'PGHL'
+    // Misc
+    'HEG',
+    'LAOPALA',
+    'KAJARIACER',
+    'VIPIND',
+    'RELAXO',
+    'PGHL',
+    ];
+
+const greedy_tickers = [
+    'AFFLE',
 ];
+
+const all_tickers = stable_tickers.concat(greedy_tickers);
 
 const fetched_indicators =
-    ['sector', 'industry', 'open', 'high', 'low', 'close', 'EMA200', 'RSI'];
+['sector', 'industry', 'open', 'high', 'low', 'close', 'EMA200', 'RSI'];
 const additional_indicators = ['closeToEMA200 (%)', 'Links'];
 const additional_indicators_calculators = [
-  (ticker, indicators) => {
-    // indicators should be a map of fetched_indicators and
-    // additional_indicators occuring before this indicator keys to their values
-    return ((indicators['close'] - indicators['EMA200']) /
-            indicators['EMA200']) *
-        100;
-  },
-  (ticker, indicators) => {
-    const trading_view_chart_url =
-        `https://www.tradingview.com/chart?symbol=NSE:${ticker}`;
-    const trading_view_details_url =
-        `https://www.tradingview.com/symbols/NSE:${ticker}`;
-    const screener_details_url =
-        `https://www.screener.in/company/${ticker}/consolidated/`;
-    const nse_page_url =
-        `https://www.nseindia.com/get-quotes/equity?symbol=${ticker}`;
+    (ticker, indicators) => {
+      // indicators should be a map of fetched_indicators and
+      // additional_indicators occuring before this indicator keys to their values
+      return ((indicators['close'] - indicators['EMA200']) /
+          indicators['EMA200']) *
+          100;
+    },
+    (ticker, indicators) => {
+      const trading_view_chart_url =
+          `https://www.tradingview.com/chart?symbol=NSE:${ticker}`;
+      const trading_view_details_url =
+          `https://www.tradingview.com/symbols/NSE:${ticker}`;
+      const screener_details_url =
+          `https://www.screener.in/company/${ticker}/consolidated/`;
+      const nse_page_url =
+          `https://www.nseindia.com/get-quotes/equity?symbol=${ticker}`;
 
-    create_link_list_item = (url, display_text) => {
-      return `<li><a href="${url}" target="_blank">${display_text}</a></li>`;
-    };
+      create_link_list_item = (url, display_text) => {
+        return `<li><a href="${url}" target="_blank">${display_text}</a></li>`;
+      };
 
-    return '<ul>' +
-        create_link_list_item(trading_view_chart_url, 'Trading View Chart') +
-        create_link_list_item(
-               trading_view_details_url, 'Trading View Details') +
-        create_link_list_item(screener_details_url, 'Screener Details') +
-        create_link_list_item(nse_page_url, 'NSE Page') + '</ul>';
-  },
-];
+      return '<ul>' +
+          create_link_list_item(trading_view_chart_url, 'Trading View Chart') +
+          create_link_list_item(
+              trading_view_details_url, 'Trading View Details') +
+          create_link_list_item(screener_details_url, 'Screener Details') +
+          create_link_list_item(nse_page_url, 'NSE Page') + '</ul>';
+    },
+    ];
 const all_indicators = fetched_indicators.concat(additional_indicators);
 
 process_response_text = function(responseText) {
@@ -191,24 +197,24 @@ process_response_text = function(responseText) {
   return ticker_indicators;
 };
 
-display_stocks_table = (ticker_indicators) => {
+update_stocks_tab = (tickers, ticker_indicators, near_ema_table_id, far_ema_table_id) => {
   // create the table header
   const tableHeader = get_table_header();
   // stocks close to ema200
   const sorted_tickers =
-      tickers.concat()
-          .sort(
-              (ticker1, ticker2) =>
-                  ticker_indicators[ticker1]['closeToEMA200 (%)'] -
-                  ticker_indicators[ticker2]['closeToEMA200 (%)'])
-          .sort(
-              (ticker1, ticker2) =>
-                  ticker_indicators[ticker1]['industry'].localeCompare(
-                      ticker_indicators[ticker2]['industry']))
-          .sort(
-              (ticker1, ticker2) =>
-                  ticker_indicators[ticker1]['sector'].localeCompare(
-                      ticker_indicators[ticker2]['sector']));
+      tickers
+      .sort(
+          (ticker1, ticker2) =>
+          ticker_indicators[ticker1]['closeToEMA200 (%)'] -
+          ticker_indicators[ticker2]['closeToEMA200 (%)'])
+      .sort(
+          (ticker1, ticker2) =>
+          ticker_indicators[ticker1]['industry'].localeCompare(
+              ticker_indicators[ticker2]['industry']))
+      .sort(
+          (ticker1, ticker2) =>
+          ticker_indicators[ticker1]['sector'].localeCompare(
+              ticker_indicators[ticker2]['sector']));
 
   const near_ema200_condition = (ticker) =>
       ticker_indicators[ticker]['closeToEMA200 (%)'] <= 1;
@@ -216,10 +222,15 @@ display_stocks_table = (ticker_indicators) => {
   const far_ema200_tickers =
       sorted_tickers.filter((ticker) => !near_ema200_condition(ticker));
 
-  document.getElementById('table-stocks-near-ema200').innerHTML =
+  document.getElementById(near_ema_table_id).innerHTML =
       tableHeader + get_table_body(near_ema200_tickers, ticker_indicators);
-  document.getElementById('table-stocks-far-ema200').innerHTML =
+  document.getElementById(far_ema_table_id).innerHTML =
       tableHeader + get_table_body(far_ema200_tickers, ticker_indicators);
+};
+
+display_stocks_table = (ticker_indicators) => {
+  update_stocks_tab(stable_tickers, ticker_indicators, 'table-stable-stocks-near-ema200','table-stable-stocks-far-ema200' );
+  update_stocks_tab(greedy_tickers, ticker_indicators, 'table-greedy-stocks-near-ema200', 'table-greedy-stocks-far-ema200');
 };
 
 /** Returns a string with the html table head element */
@@ -257,7 +268,7 @@ get_table_body = (tickers_for_table_body, ticker_indicators) => {
     tableRow += `<td>${i + 1}</td><td>${current_ticker}</td>`;
     for (let j = 0; j < all_indicators.length; j++) {
       tableRow += '<td>'
-      const indicator = current_indicators[all_indicators[j]];
+          const indicator = current_indicators[all_indicators[j]];
       if (typeof indicator === 'number') {
         tableRow += indicator.toFixed(3);
       } else {
@@ -275,13 +286,13 @@ get_table_body = (tickers_for_table_body, ticker_indicators) => {
 
 // set the last updated time
 document.getElementById('last_updated_time').innerHTML =
-    new Date().toLocaleTimeString();
+new Date().toLocaleTimeString();
 
 // send the request
 const scan_url = 'https://scanner.tradingview.com/india/scan';
 const post_request_data = {
   'symbols':
-      {'tickers': tickers.map((t) => 'NSE:' + t), 'query': {'types': []}},
+  {'tickers': all_tickers.map((t) => 'NSE:' + t), 'query': {'types': []}},
   'columns': fetched_indicators
 };
 const xhttp = new XMLHttpRequest();

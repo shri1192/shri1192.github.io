@@ -40,7 +40,7 @@
 
     <!-- Tab content for navbar tabs -->
     <div class="tab-content" id="nav-tabContent">
-      <!-- Stock class 1 tab content -->
+      <!-- Stable stocks tab content -->
       <div class="tab-pane fade show active" id="nav-stable-stocks">
         <!-- Accordions for near EMA 200 and far from EMA 200 tables -->
         <div class="accordion" id="stable-stocks-accordion">
@@ -54,7 +54,7 @@
             <div id="stable-near-ema" class="accordion-collapse collapse show">
               <div class="accordion-body">
                 <div class="table-responsive">
-                  <table class="table table-bordered table-hover" id="table-stocks-near-ema200"> </table>
+                  <table class="table table-bordered table-hover" id="table-stable-stocks-near-ema200"> </table>
                 </div>
               </div>
             </div>
@@ -63,25 +63,57 @@
           <!-- Stable stocks far from ema 200 accordion -->
           <div class="accordion-item">
             <h2 class="accordion-header">
-              <button class="accordion-button collapsed" data-bs-toggle="collapse" data-bs-target="#stable-far-from-ema">
+              <button class="accordion-button" data-bs-toggle="collapse" data-bs-target="#stable-far-from-ema">
                 <h5> Far from EMA 200 </h5>
               </button>
             </h2>
-            <div id="stable-far-from-ema" class="accordion-collapse collapse">
+            <div id="stable-far-from-ema" class="accordion-collapse collapse show">
               <div class="accordion-body">
                 <div class="table-responsive">
-                  <table class="table table-bordered table-hover" id="table-stocks-far-ema200"> </table>
+                  <table class="table table-bordered table-hover" id="table-stable-stocks-far-ema200"> </table>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Greedy stocks tab content -->
+      <div class="tab-pane fade" id="nav-greedy-stocks">
+        <!-- Accordions for near EMA 200 and far from EMA 200 tables -->
+        <div class="accordion" id="greedy-stocks-accordion">
+          <!-- Stable stocks near ema 200 accordion -->
+          <div class="accordion-item">
+            <h2 class="accordion-header">
+              <button class="accordion-button" data-bs-toggle="collapse" data-bs-target="#greedy-near-ema">
+                <h5> Near EMA 200 </h5>
+              </button>
+            </h2>
+            <div id="greedy-near-ema" class="accordion-collapse collapse show">
+              <div class="accordion-body">
+                <div class="table-responsive">
+                  <table class="table table-bordered table-hover" id="table-greedy-stocks-near-ema200"> </table>
                 </div>
               </div>
             </div>
           </div>
 
+          <!-- Stable stocks far from ema 200 accordion -->
+          <div class="accordion-item">
+            <h2 class="accordion-header">
+              <button class="accordion-button" data-bs-toggle="collapse" data-bs-target="#greedy-far-from-ema">
+                <h5> Far from EMA 200 </h5>
+              </button>
+            </h2>
+            <div id="greedy-far-from-ema" class="accordion-collapse collapse show">
+              <div class="accordion-body">
+                <div class="table-responsive">
+                  <table class="table table-bordered table-hover" id="table-greedy-stocks-far-ema200"> </table>
+                </div>
+              </div>
+            </div>
+          </div>
         </div>
-      </div>
-
-      <!-- Stock class 2 tab content -->
-      <div class="tab-pane fade" id="nav-greedy-stocks" role="tabpanel" aria-labelledby="nav-greedy-stocks-tab">
-        <h1>// TODO: Add greedy stocks</h1>
       </div>
     </div>
 
