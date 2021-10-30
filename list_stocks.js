@@ -12,6 +12,9 @@ const stable_tickers = [
     'HDFC',
     'BAJAJHLDNG',
     'MUTHOOTFIN',
+    'CHOLAFIN',
+    'AAVAS',
+    'CANFINHOME',
 
     // AMCs
     'HDFCAMC',
@@ -23,10 +26,9 @@ const stable_tickers = [
     'TCS',
     'INFY',
     'HCLTECH',
-    'OFSS',
-    'PERSISTENT',
-    'MPHASIS',
-    'SONATSOFTW',
+    'LTI',
+    'TECHM',
+    
 
     // Pharma
     'ABBOTINDIA',
@@ -135,6 +137,31 @@ const stable_tickers = [
     ];
 
 const greedy_tickers = [
+    // Banks
+    'RBLBANK',
+    'PNB',
+    'BANKBARODA',
+    'CANBK',
+    
+    // Financial Services
+    'IRFC', 
+    'IBULHSGFIN',
+    
+    // AMCs
+    'ABSLAMC',
+    'NAM-INDIA',
+    
+    // IT
+    'OFSS',
+    'PERSISTENT',
+    'MPHASIS',
+    'SONATSOFTW',
+    'MINDTREE',
+    'COFORGE',
+    'LTTS',
+    'TATAELXSI',  
+    'HAPPSTMNDS',
+    
     'AFFLE',
 ];
 
