@@ -18,6 +18,7 @@ const stable_tickers = [
 
     // AMCs
     'HDFCAMC',
+    'ISEC',
 
     // Cards
     'SBICARD',
@@ -29,17 +30,22 @@ const stable_tickers = [
     'LTI',
     'TECHM',
     
-
     // Pharma
     'ABBOTINDIA',
     'SANOFI',
     'PFIZER',
-    'DIVISLAB',
     'CAPLIPOINT',
-    'GLAXO',
-
+    'AJANTPHARM',
+    'TORNTPHARM',
+    'SUNPHARMA',
+    
     // Healthcare
     'LALPATHLAB',
+    'ALKEM',
+    'DIVISLAB',
+    'ERIS',
+    'IPCALAB',
+    'APOLLOHOSP',
 
     // Insurance
     'HDFCLIFE',
@@ -56,18 +62,12 @@ const stable_tickers = [
     'BRITANNIA',
     'HINDUNILVR',
     'ITC',
-    'VSTIND',
     'BATAINDIA',
     'COLPAL',
     'MARICO',
     'DABUR',
-    'PIDILITIND',
     'NESTLEIND',
     'PGHH',
-    'TASTYBITE',
-
-    // Tea
-    'BBTC',
 
     // Consumer Durables
     'TITAN',
@@ -77,23 +77,38 @@ const stable_tickers = [
     'HAVELLS',
     'GILLETTE',
     '3MINDIA',
-    'JCHAC',
     'HONAUT',
+    'BOSCHLTD',
+    'SIEMENS',
+    'VGUARD',
+    'VIPIND',
+    'RELAXO',
+    'LAOPALA',
+    'KAJARIACER',
 
     // Garments/Textile
     'PAGEIND',
     'SFL',
+    'LUXIND',
+
+    // Chemicals
+    'PIDILITIND',
 
     // Specialty Chemicals
     'VINATIORGA',
     'NAVINFLUOR',
     'DEEPAKNTR',
-    'SUDARSCHEM',
     'AARTIIND',
-    'VALIANTORG',
     'ALKYLAMINE',
     'IOLCP',
     'FINEORG',
+    'BALAMINES',
+    'SRF',
+    'SOLARIND',
+    'CLEAN',
+    'GALAXYSURF',
+    'AMIORG',
+    'NEOGEN',
 
     // Agro Chemicals
     'BAYERCROP',
@@ -105,6 +120,8 @@ const stable_tickers = [
     'MGL',
     'IGL',
     'GUJGASLTD',
+    'GSPL',
+    'GAIL',
 
     // Retail
     'DMART',
@@ -126,14 +143,6 @@ const stable_tickers = [
 
     // Agritech
     'DHANUKA',
-
-    // Misc
-    'HEG',
-    'LAOPALA',
-    'KAJARIACER',
-    'VIPIND',
-    'RELAXO',
-    'PGHL',
     ];
 
 const greedy_tickers = [
@@ -161,7 +170,36 @@ const greedy_tickers = [
     'LTTS',
     'TATAELXSI',  
     'HAPPSTMNDS',
+
+    // Pharma
+    'GLAXO',
+    'LUPIN',
+    'GLENMARK',
+    'CADILAHC',
+    'AARTIDRUGS',
+    'GLAND',
+    'BIOCON',
+
+    // HEALTHCARE
+    'LAURUSLABS',
+    'PGHL',
+    'KIMS',
+
+    // PAINTS
+    'KANSAINER',
     
+    // FMCG
+    'VSTIND',
+    'TASTYBITE',
+
+    // Speciality Chemicals
+    'SUDARSCHEM',
+    'LXCHEM',
+    'ADVENZYMES',
+
+    // Gas
+    'ATGL',
+
     'AFFLE',
 ];
 
