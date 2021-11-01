@@ -158,7 +158,7 @@ const greedy_tickers = [
     
     // AMCs
     'ABSLAMC',
-    'NAM-INDIA',
+    // 'NAM-INDIA', some error with NSE not returning data
     
     // IT
     'OFSS',
