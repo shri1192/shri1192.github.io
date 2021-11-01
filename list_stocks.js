@@ -104,7 +104,7 @@ const stable_tickers = [
     'FINEORG',
     'BALAMINES',
     'SRF',
-    'SOLARIND',
+    'SOLARINDS',
     'CLEAN',
     'GALAXYSURF',
     'AMIORG',
