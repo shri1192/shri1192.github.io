@@ -93,6 +93,7 @@ const stable_tickers = [
 
     // Chemicals
     'PIDILITIND',
+    'ATUL',
 
     // Specialty Chemicals
     'VINATIORGA',
