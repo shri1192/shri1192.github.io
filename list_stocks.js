@@ -27,7 +27,7 @@ const stable_tickers = [
     'TCS',
     'INFY',
     'HCLTECH',
-    'LTI',
+    'LTIM',
     'TECHM',
     
     // Pharma
@@ -166,7 +166,6 @@ const greedy_tickers = [
     'PERSISTENT',
     'MPHASIS',
     'SONATSOFTW',
-    'MINDTREE',
     'COFORGE',
     'LTTS',
     'TATAELXSI',  
@@ -176,7 +175,7 @@ const greedy_tickers = [
     'GLAXO',
     'LUPIN',
     'GLENMARK',
-    'CADILAHC',
+    'ZYDUSLIFE',
     'AARTIDRUGS',
     'GLAND',
     'BIOCON',
