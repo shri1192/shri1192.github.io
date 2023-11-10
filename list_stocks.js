@@ -9,7 +9,6 @@ const stable_tickers = [
     // Financial Services
     'BAJFINANCE',
     'BAJAJFINSV',
-    'HDFC',
     'BAJAJHLDNG',
     'MUTHOOTFIN',
     'CHOLAFIN',
